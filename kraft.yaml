@@ -1,0 +1,64 @@
+specification: '0.4'
+
+unikraft:
+  version: staging
+  kconfig:
+    # From lib-newlib/Config.uk
+    - CONFIG_LIBNEWLIBM=y
+    - CONFIG_LIBUKALLOC=y
+    - CONFIG_LIBUKTIME=y
+    - CONFIG_LIBVFSCORE=y
+    - CONFIG_LIBPOSIX_PROCESS=y
+    - CONFIG_LIBPOSIX_USER=y
+    # From lib-pthread-embedded
+    - CONFIG_LIBUKDEBUG=y
+    - CONFIG_LIBUKSCHED=y
+    - CONFIG_LIBUKLOCK=y
+    - CONFIG_LIBUKLOCK_MUTEX=y
+    - CONFIG_LIBUKLOCK_SEMAPHORE=y
+    # From lib-lwip/Configk.uk
+    - CONFIG_LIBUKSWRAND=y
+    - CONFIG_LIBUKNETDEV=y
+    - CONFIG_LIBUKNETDEV_DISPATCHERTHREADS=y
+    - CONFIG_LIBUKMPI=y
+    - CONFIG_LIBUKMPI_MBOX=y
+    # From lib-paristraceroute
+    - CONFIG_LIBUKSIGNAL=y
+
+architectures:
+  x86_64: true
+
+platforms:
+  kvm: true
+
+libraries:
+  pthread-embedded:
+    version: staging
+    kconfig:
+      - CONFIG_LIBPTHREAD_EMBEDDED=y
+
+  newlib:
+    version: staging
+    kconfig:
+      - CONFIG_LIBNEWLIBC=y
+
+  lwip:
+    version: staging
+    kconfig:
+      - CONFIG_LWIP_UKNETDEV=y
+      - CONFIG_LWIP_TCP=y
+      - CONFIG_LWIP_WND_SCALE=y
+      - CONFIG_LWIP_TCP_KEEPALIVE=y
+      - CONFIG_LWIP_THREADS=y
+      - CONFIG_LWIP_SOCKET=y
+      - CONFIG_LWIP_AUTOIFACE=y
+      - CONFIG_LWIP_IPV4=y
+      - CONFIG_LWIP_IPV6=y
+      - CONFIG_LWIP_DHCP=y
+      - CONFIG_LWIP_DNS=y
+
+  paristraceroute:
+    version: staging
+    kconfig:
+      - CONFIG_LIBPARISTRACEROUTE=y
+      - CONFIG_LIBPARISTRACEROUTE_MAIN_FUNCTION=y
